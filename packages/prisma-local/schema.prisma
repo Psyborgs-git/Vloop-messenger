@@ -17,6 +17,8 @@ model User {
   contacts      Contact[] // user contacts imported
   conversations ConversationMember[]
   messagesSent  Message[] @relation("sender")
+  readReceipts  ReadReceipt[]
+  deliveries    Delivered[]
   createdAt     DateTime  @default(now())
 }
 
@@ -34,7 +36,7 @@ model Conversation {
   title         String?
   isGroup       Boolean       @default(false)
   members       ConversationMember[]
-  messages      Message[]     @orderBy([createdAt])
+  messages      Message[]
   lastMessageAt DateTime?
   createdAt     DateTime      @default(now())
 }
