@@ -2,6 +2,7 @@
   "name": "whatsapp-clone",
   "private": true,
   "scripts": {
+    "prebuild": "pnpm --filter @whatsapp-clone/prisma generate && pnpm --filter @whatsapp-clone/prisma-local generate",
     "dev": "echo \"dev script placeholder\""
   },
   "devDependencies": {
