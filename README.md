@@ -1,6 +1,3 @@
-Nice — going full WhatsApp clone, Electron desktop + React (Relay) + Prisma. I’ll give you an end-to-end, execution-ready plan: clear architecture choices, prioritized features, concrete monorepo folder structure, Prisma models, data-flow and sequence diagrams (Mermaid), user journeys with acceptance tests, and a complete FDD + SDLC doc for the app. No fluff — tradeoffs called out and clear next steps.
-
-⸻
 
 1 — Executive summary (what we’ll build)
 	•	Product: Desktop-first chat app (Electron) with parity features to WhatsApp v1: 1:1 chat, groups, presence, typing, read receipts, media (images/audio), offline storage & sync, end-to-end encryption as a roadmap item.
@@ -475,7 +472,3 @@ I can produce any of these immediately — pick one and I’ll deliver:
 	•	E. Prototype sequence diagrams and a clickable checklist for sprint 1 execution.
 
 I recommend B + C as the next immediate pieces to ship core messaging quickly.
-
-⸻
-
-If you want I’ll generate the GraphQL SDL + server resolver stubs and the exact Electron starter code (TS) with Prisma local setup and a Relay environment ready to compile — tell me to generate both and I’ll drop the files and commands.
