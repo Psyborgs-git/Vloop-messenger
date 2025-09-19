@@ -1,36 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import { ThemeProvider, CssBaseline, Typography, Button } from '@mui/material';
+import { theme, Layout } from '@whatsapp-clone/ui';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#075E54',
-    },
-    secondary: {
-      main: '#128C7E',
-    },
-    background: {
-      default: '#ECE5DD',
-    },
-  },
-});
+// This is a global declaration for the electronAPI exposed in the preload script.
+declare global {
+  interface Window {
+    electronAPI: {
+      getUsers: () => Promise<any[]>;
+    };
+  }
+}
 
 function App() {
+  const [users, setUsers] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUsers = async () => {
+    try {
+      const result = await window.electronAPI.getUsers();
+      setUsers(result);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container>
-        <Typography variant="h1" component="h1" gutterBottom>
-          Ahoy, Matey!
+      <Layout>
+        <Typography variant="h4" gutterBottom>
+          Welcome to the WhatsApp Clone
         </Typography>
-        <Typography variant="body1">
-          Welcome to our WhatsApp clone. More treasure to come!
+        <Typography paragraph>
+          This is the main content area.
         </Typography>
-      </Container>
+        <Button variant="contained" onClick={fetchUsers}>
+          Fetch Users from DB
+        </Button>
+        {error && <Typography color="error" sx={{ mt: 2 }}>Error: {error}</Typography>}
+        {users.length > 0 && (
+          <div style={{ marginTop: '16px' }}>
+            <Typography variant="h6">Users:</Typography>
+            <ul>
+              {users.map((user) => (
+                <li key={user.id}>{user.name || user.email || user.id}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </Layout>
     </ThemeProvider>
   );
 }

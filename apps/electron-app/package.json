@@ -1,6 +1,10 @@
 {
   "name": "@whatsapp-clone/electron-app",
   "version": "0.1.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "webpack --config webpack.renderer.config.js && webpack --config webpack.main.config.js && electron ."
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

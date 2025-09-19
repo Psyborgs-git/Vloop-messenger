@@ -2,12 +2,13 @@
   "name": "@whatsapp-clone/prisma-local",
   "version": "0.1.0",
   "scripts": {
-    "generate": "npx prisma generate"
+    "generate": "npx prisma generate",
+    "prisma": "prisma"
   },
   "dependencies": {
-    "@prisma/client": "^5.7..0"
+    "@prisma/client": "^6.16.2"
   },
   "devDependencies": {
-    "prisma": "^5.7.0"
+    "prisma": "^6.16.2"
   }
 }
