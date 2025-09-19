@@ -1,6 +1,9 @@
 {
   "name": "@whatsapp-clone/prisma-local",
   "version": "0.1.0",
+  "scripts": {
+    "generate": "prisma generate"
+  },
   "dependencies": {
     "@prisma/client": "^5.7.0"
   },
